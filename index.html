@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<title>Document</title>
+<style>
+    .my-row{
+        /* border: 2px solid black; */
+        width: 400px;
+        height: 50%;
+    }
+    .btn-group{
+        /* border: 2px solid red; */
+        width: 400px;
+        height: 100px;
+    }
+</style>
+</head>
+<body class="p-5">
+
+    <div class="alert alert-success alert-dismissible fade" role="alert">
+        <strong>Congrats!</strong>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+      </div>
+
+    <h2>What is the capital of india ?</h2>
+    <div class="btn-group" style="display: block;">
+        <div class="my-row">
+            <button class="btn btn-primary px-5" onclick="wrongAnswer(this)">Mumbai</button>
+            <button class="btn btn-primary px-5" onclick="rightAnswer(this)">New delhi</button>
+        </div>
+        <div class="my-row">
+            <button class="btn btn-primary px-5" onclick="wrongAnswer(this)">Punjab</button>
+            <button class="btn btn-primary px-5" onclick="wrongAnswer(this)">Jammu</button>
+        </div>
+        <h5>Score : <span class="answer">0</span> </h5>
+    </div>
+</body>
+<script>
+
+function rightAnswer(this_button){
+
+    document.querySelector('.answer').innerText = 1
+
+    this_button.setAttribute('class','bg-success btn btn-dark')
+    console.log(this_button);
+
+    let all_button = document.querySelectorAll('button')
+    console.log(document.querySelectorAll('button'))
+
+    all_button.forEach(all_btn=>{
+        all_btn.setAttribute('disabled','true')
+    })
+
+    strong = document.querySelector('.alert strong')
+    strong.innerText = 'Correct! This is an correct answer'
+
+    let alert = document.querySelector('.alert')
+    console.log(alert);
+    alert.setAttribute('class',"alert alert-success alert-dismissible fade show")
+    setTimeout(function(){ 
+        alert.setAttribute('class',"alert alert-success alert-dismissible fade")
+     }, 2000)
+}
+
+function wrongAnswer(this_button){
+    this_button.setAttribute('class','bg-danger btn btn-dark')
+
+    let all_button = document.querySelectorAll('button')
+    console.log(document.querySelectorAll('button'))
+
+    all_button.forEach(all_btn=>{
+        all_btn.setAttribute('disabled','true')
+    })
+
+    strong = document.querySelector('.alert strong')
+    strong.innerText = 'Wrong! This is an incorrect answer, Please try again'
+
+    alert = document.querySelector('.alert')
+    console.log(alert);
+    alert.setAttribute('class',"alert alert-danger alert-dismissible fade show")
+    setTimeout(function(){ 
+        alert.setAttribute('class',"alert alert-danger alert-dismissible fade")
+     }, 2000)
+}
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</html>
